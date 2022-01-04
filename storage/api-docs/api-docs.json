@@ -1,0 +1,225 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Prueba para Drivania",
+        "version": "0.1"
+    },
+    "paths": {
+        "/ride_service/{ride_service_id}": {
+            "get": {
+                "tags": [
+                    "Ride Services"
+                ],
+                "summary": "Get a ride service",
+                "description": "Get a ride service",
+                "operationId": "GetRideService",
+                "parameters": [
+                    {
+                        "name": "ride_service_id",
+                        "in": "path",
+                        "description": "Filter by ride_service_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created ride service",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetRideService"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/ride_service": {
+            "put": {
+                "tags": [
+                    "Ride Services"
+                ],
+                "summary": "Put a ride service",
+                "description": "Put a ride service",
+                "operationId": "PutRideService",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PutRideService"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated ride service",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetRideService"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Ride Services"
+                ],
+                "summary": "Store a ride service",
+                "description": "Store a ride service",
+                "operationId": "StoreRideService",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostRideService"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created ride service",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetRideService"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetRideService": {
+                "title": "Get ride service Dto",
+                "description": "GetRideService Class.",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "uuid"
+                    },
+                    "pickUp": {
+                        "type": "string",
+                        "example": "Granada:10,20:40,10"
+                    },
+                    "dropOff": {
+                        "type": "string",
+                        "example": "Barcelona:10,20:40,10,40"
+                    },
+                    "vehicleTypeId": {
+                        "type": "string",
+                        "example": "uuid"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2020-12-10"
+                    }
+                },
+                "type": "object"
+            },
+            "PostRideService": {
+                "title": "Post ride service Dto",
+                "description": "PostRideService Class.",
+                "required": [
+                    "pickUp",
+                    "dropOff",
+                    "vehicleType"
+                ],
+                "properties": {
+                    "pickUp": {
+                        "type": "string",
+                        "example": "Granada:10,20:40,10"
+                    },
+                    "dropOff": {
+                        "type": "string",
+                        "example": "Barcelona:10,20:40,10,40"
+                    },
+                    "vehicleTypeId": {
+                        "type": "string",
+                        "example": "uuiD"
+                    }
+                },
+                "type": "object"
+            },
+            "PutRideService": {
+                "title": "Put ride service Dto",
+                "description": "PutRideService Class.",
+                "required": [
+                    "ip",
+                    "pickUp",
+                    "dropOff",
+                    "vehicleType"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "uuid"
+                    },
+                    "pickUp": {
+                        "type": "string",
+                        "example": "Granada:10,20:40,10"
+                    },
+                    "dropOff": {
+                        "type": "string",
+                        "example": "Barcelona:10,20:40,10,40"
+                    },
+                    "vehicleTypeId": {
+                        "type": "string",
+                        "example": "uuiD"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
